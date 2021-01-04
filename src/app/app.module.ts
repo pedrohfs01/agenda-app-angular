@@ -6,10 +6,13 @@ import { MatButtonModule } from "@angular/material/button"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContatoComponent } from './contato/contato.component';
+import { ContatoService } from './services/contato.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ContatoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
