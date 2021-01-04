@@ -14,6 +14,8 @@ export class ContatoComponent implements OnInit {
 
   contatos: Contato[] = []
 
+  colunas = ["id", "nome", "email", "favorito"];
+
   constructor(
     private service: ContatoService,
     private fb: FormBuilder
