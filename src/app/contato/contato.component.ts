@@ -33,6 +33,12 @@ export class ContatoComponent implements OnInit {
     });
   }
 
+  favoritar(contato: Contato){
+    this.service.favourite(contato).subscribe(response => {
+      contato.favorito = !contato.favorito;
+    })
+   }
+
   listarContatos(){
     this.service.listarTodos().subscribe(response => {
       this.contatos = response;
