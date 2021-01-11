@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Contato } from '../contato/contato';
+import { PaginaContato } from '../contato/pagina-contato';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,11 @@ export class ContatoService {
     return this.http.post<Contato>(`${this.url}`, contato);
   }
 
-  listarTodos(): Observable<Contato[]>{
-    return this.http.get<Contato[]>(this.url);
+  listarTodos(page, size): Observable<PaginaContato[]>{
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size);
+    return this.http.get<PaginaContato[]>(`${this.url}?${params.toString()}`);
   }
 
   favourite(contato: Contato) : Observable<any>{
